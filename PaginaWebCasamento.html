@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva para o Casamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            color: #2d3e50;
+        }
+        .countdown {
+            font-size: 2em;
+            color: #ff6347;
+        }
+    </style>
+</head>
+<body>
+    <h1>Faltam para o nosso casamento!</h1>
+    <div id="countdown" class="countdown"></div>
+    <script>
+        var weddingDate = new Date("2025-09-07T00:00:00").getTime();
+        
+        var countdownFunction = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = weddingDate - now;
+            
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            
+            document.getElementById("countdown").innerHTML = days + " dias restantes";
+            
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "Chegou o grande dia!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
