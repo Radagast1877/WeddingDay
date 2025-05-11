@@ -146,9 +146,7 @@
       display: none;
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity varස
-
- var(--tab-transition), transform var(--tab-transition);
+      transition: opacity var(--tab-transition), transform var(--tab-transition);
     }
 
     .tab-content.active {
@@ -255,7 +253,7 @@
     /* Área de fotos */
     .photos-section {
       width: 100%;
-      Discord de suporte da xAI: https://discord.gg/xai margin: 50px 0;
+      margin: 50px 0;
     }
 
     .photo-gallery {
@@ -284,17 +282,12 @@
       object-fit: cover;
     }
 
-    /* Ajuste de corte para imagens específicas na galeria de fotos */
-    .photo-image[src="./Images/2017.jpg"] {
-      object-position: center top; /* Foca no topo da imagem */
-    }
-
-    .photo-image[src="./Images/2018.jpg"] {
-      object-position: center 30%; /* Foca a 30% da altura a partir do topo */
-    }
-
-    .photo-image[src="./Images/2019.jpg"] {
-      object-position: left center; /* Foca na esquerda da imagem */
+    .photo-year {
+      padding: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--primary);
+      text-align: center;
     }
 
     /* Área do vídeo */
@@ -346,19 +339,6 @@
       height: 180px;
       width: 100%;
       object-fit: cover;
-    }
-
-    /* Ajuste de corte para imagens específicas na lista de presentes */
-    .gift-image[src="./Images/luademel.jpg"] {
-      object-position: center top; /* Foca no topo da imagem */
-    }
-
-    .gift-image[src="./Images/panosdeprato.jpg"] {
-      object-position: center center; /* Foca no centro da imagem */
-    }
-
-    .gift-image[src="./Images/quadrinhos.jpg"] {
-      object-position: right center; /* Foca na direita da imagem */
     }
 
     .gift-info {
@@ -601,6 +581,8 @@
           </div>
           
           <div class="countdown-item">
+ &
+
             <div class="digits-row">
               <div class="flip-card" id="seconds-10"><span>0</span></div>
               <div class="flip-card" id="seconds-1"><span>0</span></div>
@@ -831,7 +813,9 @@
           <div class="gift-info">
             <div class="gift-title">Aviãozinho do Silvio Santos</div>
             <div class="gift-price">R$ 50,00</div>
-            <button class="gift-button" data-value="50" data-title="Aviãozinho">Presentear</button>
+            <button class="gift-button" data-value="50" data-title="A останов
+
+viãozinho">Presentear</button>
           </div>
         </div>
 
@@ -936,146 +920,158 @@
   <script>
     // Configuração da data do casamento (formato: ano, mês-1, dia, hora, minuto)
     const weddingDate = new Date(2025, 8, 7, 16, 0, 0); // 7 de setembro de 2025 às 16h
-    
+
     // Função para atualizar a contagem regressiva
     function updateCountdown() {
-      const elements = {
-        'days-100': document.getElementById('days-100'),
-        'days-10': document.getElementById('days-10'),
-        'days-1': document.getElementById('days-1'),
-        'hours-10': document.getElementById('hours-10'),
-        'hours-1': document.getElementById('hours-1'),
-        'minutes-10': document.getElementById('minutes-10'),
-        'minutes-1': document.getElementById('minutes-1'),
-        'seconds-10': document.getElementById('seconds-10'),
-        'seconds-1': document.getElementById('seconds-1')
-      };
-    
-      // Verifica se todos os elementos existem
-      for (const id in elements) {
-        if (!elements[id] || !elements[id].querySelector('span')) {
-          console.error(`Elemento com ID ${id} ou seu span não encontrado.`);
-          return;
-        }
-      }
-    
       const now = new Date();
       const diff = weddingDate - now;
-    
+
       // Se a data já passou, mostra zeros
       if (diff <= 0) {
-        for (const id in elements) {
-          elements[id].querySelector('span').textContent = '0';
-        }
+        document.getElementById('days-100').querySelector('span').textContent = '0';
+        document.getElementById('days-10').querySelector('span').textContent = '0';
+        document.getElementById('days-1').querySelector('span').textContent = '0';
+        document.getElementById('hours-10').querySelector('span').textContent = '0';
+        document.getElementById('hours-1').querySelector('span').textContent = '0';
+        document.getElementById('minutes-10').querySelector('span').textContent = '0';
+        document.getElementById('minutes-1').querySelector('span').textContent = '0';
+        document.getElementById('seconds-10').querySelector('span').textContent = '0';
+        document.getElementById('seconds-1').querySelector('span').textContent = '0';
         return;
       }
-    
+
       // Calcula dias, horas, minutos e segundos
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    
+
       // Atualiza os elementos do contador
       const daysStr = days.toString().padStart(3, '0');
       const hoursStr = hours.toString().padStart(2, '0');
       const minutesStr = minutes.toString().padStart(2, '0');
       const secondsStr = seconds.toString().padStart(2, '0');
-    
-      elements['days-100'].querySelector('span').textContent = daysStr[0];
-      elements['days-10'].querySelector('span').textContent = daysStr[1];
-      elements['days-1'].querySelector('span').textContent = daysStr[2];
-      elements['hours-10'].querySelector('span').textContent = hoursStr[0];
-      elements['hours-1'].querySelector('span').textContent = hoursStr[1];
-      elements['minutes-10'].querySelector('span').textContent = minutesStr[0];
-      elements['minutes-1'].querySelector('span').textContent = minutesStr[1];
-      elements['seconds-10'].querySelector('span').textContent = secondsStr[0];
-      elements['seconds-1'].querySelector('span').textContent = secondsStr[1];
+
+      document.getElementById('days-100').querySelector('span').textContent = daysStr[0];
+      document.getElementById('days-10').querySelector('span').textContent = daysStr[1];
+      document.getElementById('days-1').querySelector('span').textContent = daysStr[2];
+      document.getElementById('hours-10').querySelector('span').textContent = hoursStr[0];
+      document.getElementById('hours-1').querySelector('span').textContent = hoursStr[1];
+      document.getElementById('minutes-10').querySelector('span').textContent = minutesStr[0];
+      document.getElementById('minutes-1').querySelector('span').textContent = minutesStr[1];
+      document.getElementById('seconds-10').querySelector('span').textContent = secondsStr[0];
+      document.getElementById('seconds-1').querySelector('span').textContent = secondsStr[1];
     }
-    
-    // Executa a contagem regressiva após o DOM estar carregado
-    document.addEventListener('DOMContentLoaded', () => {
-      updateCountdown(); // Executa imediatamente
-      setInterval(updateCountdown, 1000); // Atualiza a cada segundo
-    });
-    
+
+    // Atualiza a contagem regressiva a cada segundo
+    updateCountdown(); // Executa imediatamente
+    setInterval(updateCountdown, 1000); // Depois atualiza a cada segundo
+
     // Navegação entre abas
     const tabs = document.querySelectorAll('.tab');
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
+        // Remove a classe active de todas as abas
         tabs.forEach(t => t.classList.remove('active'));
+        // Adiciona a classe active na aba clicada
         tab.classList.add('active');
+        
+        // Esconde todos os conteúdos
         document.querySelectorAll('.tab-content').forEach(content => {
           content.classList.remove('active');
         });
+        
+        // Mostra o conteúdo da aba selecionada
         const tabId = tab.getAttribute('data-tab');
         document.getElementById(tabId + '-tab').classList.add('active');
       });
     });
-    
+
     // Modal para pagamento
     const modal = document.getElementById('payment-modal');
     const giftButtons = document.querySelectorAll('.gift-button');
     const closeModal = document.querySelector('.close-modal');
-    
+
     giftButtons.forEach(button => {
       button.addEventListener('click', () => {
         const giftTitle = button.getAttribute('data-title');
         const giftValue = button.getAttribute('data-value');
+        
         document.getElementById('gift-title').textContent = giftTitle;
         document.getElementById('gift-value').textContent = `R$ ${giftValue},00`;
+        
         modal.style.display = 'flex';
       });
     });
-    
+
     closeModal.addEventListener('click', () => {
       modal.style.display = 'none';
     });
-    
+
     window.addEventListener('click', (event) => {
       if (event.target === modal) {
         modal.style.display = 'none';
       }
     });
-    
+
     // Criar corações animados no fundo
     function createHearts() {
       const container = document.getElementById('hearts-container');
       const heartCount = 20;
+      
       for (let i = 0; i < heartCount; i++) {
         const heart = document.createElement('div');
         heart.classList.add('heart');
+        
+        // Posição aleatória
         const left = Math.random() * 100;
         heart.style.left = `${left}%`;
-        const duration = Math.random() * 15 + 10;
+        
+        // Duração aleatória
+        const duration = Math.random() * 15 + 10; // Entre 10 e 25 segundos
         heart.style.animation = `fall ${duration}s linear infinite`;
+        
+        // Atraso aleatório
         const delay = Math.random() * 15;
         heart.style.animationDelay = `${delay}s`;
-        const size = Math.random() * 15 + 10;
+        
+        // Tamanho aleatório
+        const size = Math.random() * 15 + 10; // Entre 10 e 25 pixels
         heart.style.width = `${size}px`;
         heart.style.height = `${size}px`;
+        
         container.appendChild(heart);
       }
     }
-    
-    document.addEventListener('DOMContentLoaded', createHearts);
-    
+
+    createHearts();
+
     // PWA Install Button
     let deferredPrompt;
     const installButton = document.getElementById('install-button');
-    
+
     window.addEventListener('beforeinstallprompt', (e) => {
+      // Impede que o mini-infobar apareça em celulares
       e.preventDefault();
+      // Armazena o evento para que possa ser acionado mais tarde
       deferredPrompt = e;
+      // Exibe o botão de instalação
       installButton.style.display = 'block';
     });
-    
+
     installButton.addEventListener('click', async () => {
-      if (!deferredPrompt) return;
+      if (!deferredPrompt) {
+        return;
+      }
+      // Mostra o prompt de instalação
       deferredPrompt.prompt();
+      // Espera pela escolha do usuário
       const { outcome } = await deferredPrompt.userChoice;
+      // Registra a escolha do usuário
       console.log(`User ${outcome} the app installation`);
+      // Limpa a referência
       deferredPrompt = null;
+      // Esconde o botão
       installButton.style.display = 'none';
     });
   </script>
