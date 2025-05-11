@@ -277,9 +277,10 @@
     }
 
     .photo-image {
-      height: 180px;
       width: 100%;
-      object-fit: cover;
+      max-height: 180px;
+      object-fit: contain;
+      display: block;
     }
 
     .photo-year {
@@ -336,9 +337,10 @@
     }
 
     .gift-image {
-      height: 180px;
       width: 100%;
-      object-fit: cover;
+      max-height: 180px;
+      object-fit: contain;
+      display: block;
     }
 
     .gift-info {
@@ -581,8 +583,6 @@
           </div>
           
           <div class="countdown-item">
- &
-
             <div class="digits-row">
               <div class="flip-card" id="seconds-10"><span>0</span></div>
               <div class="flip-card" id="seconds-1"><span>0</span></div>
@@ -813,9 +813,7 @@
           <div class="gift-info">
             <div class="gift-title">Aviãozinho do Silvio Santos</div>
             <div class="gift-price">R$ 50,00</div>
-            <button class="gift-button" data-value="50" data-title="A останов
-
-viãozinho">Presentear</button>
+            <button class="gift-button" data-value="50" data-title="Aviãozinho">Presentear</button>
           </div>
         </div>
 
