@@ -146,7 +146,9 @@
       display: none;
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity var(--tab-transition), transform var(--tab-transition);
+      transition: opacity varස
+
+ var(--tab-transition), transform var(--tab-transition);
     }
 
     .tab-content.active {
@@ -253,7 +255,7 @@
     /* Área de fotos */
     .photos-section {
       width: 100%;
-      margin: 50px 0;
+      Discord de suporte da xAI: https://discord.gg/xai margin: 50px 0;
     }
 
     .photo-gallery {
@@ -282,12 +284,17 @@
       object-fit: cover;
     }
 
-    .photo-year {
-      padding: 20px;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: var(--primary);
-      text-align: center;
+    /* Ajuste de corte para imagens específicas na galeria de fotos */
+    .photo-image[src="./Images/2017.jpg"] {
+      object-position: center top; /* Foca no topo da imagem */
+    }
+
+    .photo-image[src="./Images/2018.jpg"] {
+      object-position: center 30%; /* Foca a 30% da altura a partir do topo */
+    }
+
+    .photo-image[src="./Images/2019.jpg"] {
+      object-position: left center; /* Foca na esquerda da imagem */
     }
 
     /* Área do vídeo */
@@ -339,6 +346,19 @@
       height: 180px;
       width: 100%;
       object-fit: cover;
+    }
+
+    /* Ajuste de corte para imagens específicas na lista de presentes */
+    .gift-image[src="./Images/luademel.jpg"] {
+      object-position: center top; /* Foca no topo da imagem */
+    }
+
+    .gift-image[src="./Images/panosdeprato.jpg"] {
+      object-position: center center; /* Foca no centro da imagem */
+    }
+
+    .gift-image[src="./Images/quadrinhos.jpg"] {
+      object-position: right center; /* Foca na direita da imagem */
     }
 
     .gift-info {
@@ -581,8 +601,6 @@
           </div>
           
           <div class="countdown-item">
- &
-
             <div class="digits-row">
               <div class="flip-card" id="seconds-10"><span>0</span></div>
               <div class="flip-card" id="seconds-1"><span>0</span></div>
@@ -813,9 +831,7 @@
           <div class="gift-info">
             <div class="gift-title">Aviãozinho do Silvio Santos</div>
             <div class="gift-price">R$ 50,00</div>
-            <button class="gift-button" data-value="50" data-title="A останов
-
-viãozinho">Presentear</button>
+            <button class="gift-button" data-value="50" data-title="Aviãozinho">Presentear</button>
           </div>
         </div>
 
@@ -958,7 +974,7 @@ viãozinho">Presentear</button>
       document.getElementById('hours-10').querySelector('span').textContent = hoursStr[0];
       document.getElementById('hours-1').querySelector('span').textContent = hoursStr[1];
       document.getElementById('minutes-10').querySelector('span').textContent = minutesStr[0];
-      document.getElementById('minutes-1').querySelector('span').textContent = minutesStr[1];
+      document.getElementById('minutes любви-1').querySelector('span').textContent = minutesStr[1];
       document.getElementById('seconds-10').querySelector('span').textContent = secondsStr[0];
       document.getElementById('seconds-1').querySelector('span').textContent = secondsStr[1];
     }
