@@ -258,27 +258,36 @@
 
     .photo-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-      margin: 20px 0;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
     }
 
-    .photo-placeholder {
-      background-color: rgba(255, 255, 255, 0.8);
-      height: 200px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      position: relative;
+    .photo-card {
+      background-color: white;
+      border-radius: 15px;
       overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .photo-placeholder::before {
-      content: "Adicione sua foto aqui";
-      color: var(--light-text);
-      font-style: italic;
+    .photo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .photo-image {
+      height: 180px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .photo-year {
+      padding: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--primary);
+      text-align: center;
     }
 
     /* Área do vídeo */
@@ -297,25 +306,12 @@
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .video-placeholder {
+    .video-container iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(255, 255, 255, 0.8);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--light-text);
-    }
-
-    .video-placeholder svg {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 15px;
-      color: var(--primary);
     }
 
     /* Lista de presentes */
@@ -531,6 +527,10 @@
       .gifts-grid {
         grid-template-columns: 1fr;
       }
+      
+      .photo-gallery {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -581,6 +581,8 @@
           </div>
           
           <div class="countdown-item">
+ &
+
             <div class="digits-row">
               <div class="flip-card" id="seconds-10"><span>0</span></div>
               <div class="flip-card" id="seconds-1"><span>0</span></div>
@@ -593,29 +595,52 @@
       <div class="date-highlight">07 de Setembro de 2025</div>
 
       <!-- Galeria de fotos -->
-      <div class="photo-gallery">
-        <div class="photo-placeholder"><img src="./Images/2017.jpg" alt="2017" style="width: 100%; height: 100%; object-fit: cover;"><div style="text-align:center; margin-top: 5px;">2017</div></div>
-        <div class="photo-placeholder"><img src="./Images/2018.jpg" alt="2018" style="width: 100%; height: 100%; object-fit: cover;"><div style="text-align:center; margin-top: 5px;">2018</div></div>
-        <div class="photo-placeholder"><img src="./Images/2019.jpg" alt="2019" style="width: 100%; height: 100%; object-fit: cover;"><div style="text-align:center; margin-top: 5px;">2019</div></div>
-        <div class="photo-placeholder"><img src="./Images/2020.jpg" alt="2020" style="width: 100%; height: 100%; object-fit: cover;"><div style="text-align:center; margin-top: 5px;">2020</div></div>
-        <div class="photo-placeholder"><img src="./Images/2021.jpg" alt="2021" style="width: 100%; height: 100%; object-fit: cover;"><div style="text-align:center; margin-top: 5px;">2021</div></div>
-        <div class="photo-placeholder"><img src="./Images/2022.jpg" alt="2022" style="width: 100%; height: 100%; object-fit: cover;"><div style="text-align:center; margin-top: 5px;">2022</div></div>
-        <div class="photo-placeholder"><img src="./Images/2023.jpg" alt="2023" style="width: 100%; height: 100%; object-fit: cover;"><div style="text-align:center; margin-top: 5px;">2023</div></div>
-        <div class="photo-placeholder"><img src="./Images/2024.jpg" alt="2024" style="width: 100%; height: 100%; object-fit: cover;"><div style="text-align:center; margin-top: 5px;">2024</div></div>
-        <div class="photo-placeholder"><img src="./Images/2025.jpg" alt="2025" style="width: 100%; height: 100%; object-fit: cover;"><div style="text-align:center; margin-top: 5px;">2025</div></div>
+      <div class="photos-section">
+        <div class="photo-gallery">
+          <div class="photo-card">
+            <img src="./Images/2017.jpg" alt="2017" class="photo-image">
+            <div class="photo-year">2017</div>
+          </div>
+          <div class="photo-card">
+            <img src="./Images/2018.jpg" alt="2018" class="photo-image">
+            <div class="photo-year">2018</div>
+          </div>
+          <div class="photo-card">
+            <img src="./Images/2019.jpg" alt="2019" class="photo-image">
+            <div class="photo-year">2019</div>
+          </div>
+          <div class="photo-card">
+            <img src="./Images/2020.jpg" alt="2020" class="photo-image">
+            <div class="photo-year">2020</div>
+          </div>
+          <div class="photo-card">
+            <img src="./Images/2021.jpg" alt="2021" class="photo-image">
+            <div class="photo-year">2021</div>
+          </div>
+          <div class="photo-card">
+            <img src="./Images/2022.jpg" alt="2022" class="photo-image">
+            <div class="photo-year">2022</div>
+          </div>
+          <div class="photo-card">
+            <img src="./Images/2023.jpg" alt="2023" class="photo-image">
+            <div class="photo-year">2023</div>
+          </div>
+          <div class="photo-card">
+            <img src="./Images/2024.jpg" alt="2024" class="photo-image">
+            <div class="photo-year">2024</div>
+          </div>
+          <div class="photo-card">
+            <img src="./Images/2025.jpg" alt="2025" class="photo-image">
+            <div class="photo-year">2025</div>
+          </div>
+        </div>
       </div>
-
 
       <!-- Vídeo do YouTube -->
       <div class="video-section">
         <h3>Nosso Vídeo</h3>
         <div class="video-container">
-          <div class="video-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
-            <p>Adicione seu vídeo do YouTube aqui</p>
-          </div>
+          <iframe src="https://www.youtube.com/embed/k-QNQ1CJWvE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -788,7 +813,9 @@
           <div class="gift-info">
             <div class="gift-title">Aviãozinho do Silvio Santos</div>
             <div class="gift-price">R$ 50,00</div>
-            <button class="gift-button" data-value="50" data-title="Aviãozinho">Presentear</button>
+            <button class="gift-button" data-value="50" data-title="A останов
+
+viãozinho">Presentear</button>
           </div>
         </div>
 
