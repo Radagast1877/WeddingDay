@@ -59,127 +59,11 @@
       text-align: center;
     }
 
-    header {
-      margin-bottom: 40px;
-      width: 100%;
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      margin-bottom: 15px;
-      color: var(--primary);
-      font-weight: 700;
-      position: relative;
-      padding-bottom: 20px;
-    }
-
-    h1::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background-color: var(--accent);
-    }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.5rem;
-      color: var(--light-text);
-      font-weight: 400;
-      margin-top: 10px;
-    }
-
-    h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      color: var(--primary);
-      margin: 30px 0 20px;
-    }
-
     .names {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
       margin-top: 20px;
       color: var(--primary);
-    }
-
-    /* Abas de navegação */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0 40px;
-      gap: 10px;
-      width: 100%;
-    }
-
-    .tab {
-      padding: 12px 25px;
-      background-color: rgba(255, 255, 255, 0.6);
-      border: 2px solid var(--primary);
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: 600;
-      color: var(--primary);
-      transition: all 0.3s ease;
-    }
-
-    .tab:hover {
-      background-color: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(167, 126, 88, 0.3);
-    }
-
-    .tab.active {
-      background-color: var(--primary);
-      color: white;
-    }
-
-    /* Conteúdo das abas */
-    .tab-content {
-      width: 100%;
-      display: none;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity var(--tab-transition), transform var(--tab-transition);
-    }
-
-    .tab-content.active {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .countdown-wrapper {
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      margin: 40px 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .countdown-wrapper::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-    }
-
-    .countdown-label {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: var(--primary);
-      font-family: 'Playfair Display', serif;
     }
 
     .countdown-container {
@@ -198,6 +82,8 @@
     .digits-row {
       display: flex;
       flex-direction: row;
+      align-items: center;
+      justify-content: center;
     }
 
     .flip-card {
@@ -217,733 +103,74 @@
       color: var(--primary);
     }
 
-    .flip-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .countdown-unit {
-      font-size: 1rem;
-      color: var(--light-text);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .date-highlight {
-      margin: 30px 0;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    .footer {
-      margin-top: 30px;
-      font-size: 1rem;
-      color: var(--light-text);
-      max-width: 80%;
-      line-height: 1.6;
-    }
-
-    /* Área de fotos */
-    .photos-section {
-      width: 100%;
-      margin: 50px 0;
-    }
-
-    .photo-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 30px;
-      margin: 30px 0;
-    }
-
-    .photo-card {
-      background-color: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .photo-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    }
-
-    .photo-image {
-      height: 180px;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    .photo-year {
-      padding: 20px;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: var(--primary);
-      text-align: center;
-    }
-
-    /* Área do vídeo */
-    .video-section {
-      width: 100%;
-      margin: 50px 0;
-    }
-
-    .video-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* Proporção 16:9 */
-      height: 0;
-      overflow: hidden;
-      border-radius: 15px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    /* Lista de presentes */
-    .gifts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 30px;
-      margin: 30px 0;
-    }
-
-    .gift-card {
-      background-color: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .gift-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    }
-
+    .photo-image,
     .gift-image {
       height: 180px;
       width: 100%;
       object-fit: cover;
+      object-position: top;
     }
 
-    .gift-info {
-      padding: 20px;
-    }
-
-    .gift-title {
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--text);
-      font-size: 1.1rem;
-    }
-
-    .gift-price {
-      font-size: 1.2rem;
-      color: var(--primary);
-      font-weight: bold;
-      margin: 5px 0 15px;
-    }
-
-    .gift-button {
+    /* Correção do & fantasma */
+    .flip-card span {
+      display: inline-block;
       width: 100%;
-      padding: 12px 0;
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .gift-button:hover {
-      background-color: var(--accent);
-    }
-
-    /* Modal para o QR Code */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-content {
-      background-color: white;
-      padding: 30px;
-      border-radius: 15px;
       text-align: center;
-      max-width: 90%;
-      width: 400px;
-      position: relative;
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--light-text);
-    }
-
-    .qr-code-placeholder {
-      width: 250px;
-      height: 250px;
-      background-color: #f2f2f2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 20px auto;
-      border-radius: 10px;
-      border: 2px dashed #ccc;
-    }
-
-    .hearts {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: rgba(167, 126, 88, 0.15);
-      transform: rotate(45deg);
-      animation: fall linear infinite;
-    }
-
-    .heart::before, .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: rgba(167, 126, 88, 0.15);
-      border-radius: 50%;
-    }
-
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-
-    .heart::after {
-      top: 0;
-      left: -10px;
-    }
-
-    @keyframes fall {
-      0% {
-        opacity: 0;
-        transform: translate(0, -100px) rotate(45deg);
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-        transform: translate(0, 100vh) rotate(45deg);
-      }
-    }
-
-    #install-button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      display: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    #install-button:hover {
-      background-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-      
-      h2 {
-        font-size: 1.2rem;
-      }
-      
-      .names {
-        font-size: 1.8rem;
-      }
-      
-      .flip-card {
-        width: 55px;
-        height: 75px;
-        font-size: 2rem;
-      }
-      
-      .countdown-label {
-        font-size: 1.5rem;
-      }
-      
-      .tabs {
-        flex-wrap: wrap;
-      }
-      
-      .tab {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-      }
-      
-      .gifts-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .photo-gallery {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="hearts" id="hearts-container"></div>
-  
   <div class="container">
-    <header>
-      <h1>Nosso Grande Dia</h1>
-      <h2>Estamos contando cada momento até dizer "Sim"</h2>
-      <div class="names">Jaqueline & Marcos</div>
-    </header>
+    <h1>Nosso Grande Dia</h1>
+    <h2>Estamos contando cada momento até dizer "Sim"</h2>
+    <div class="names">Jaqueline & Marcos</div>
 
-    <div class="tabs">
-      <div class="tab active" data-tab="countdown">Contagem Regressiva</div>
-      <div class="tab" data-tab="gifts">Lista de Presentes</div>
-    </div>
-
-    <!-- Aba de Contagem Regressiva -->
-    <div class="tab-content active" id="countdown-tab">
-      <div class="countdown-wrapper">
-        <div class="countdown-label">Faltam apenas</div>
-        
-        <div class="countdown-container">
-          <div class="countdown-item">
-            <div class="digits-row">
-              <div class="flip-card" id="days-100"><span>0</span></div>
-              <div class="flip-card" id="days-10"><span>0</span></div>
-              <div class="flip-card" id="days-1"><span>0</span></div>
-            </div>
-            <div class="countdown-unit">Dias</div>
-          </div>
-          
-          <div class="countdown-item">
-            <div class="digits-row">
-              <div class="flip-card" id="hours-10"><span>0</span></div>
-              <div class="flip-card" id="hours-1"><span>0</span></div>
-            </div>
-            <div class="countdown-unit">Horas</div>
-          </div>
-          
-          <div class="countdown-item">
-            <div class="digits-row">
-              <div class="flip-card" id="minutes-10"><span>0</span></div>
-              <div class="flip-card" id="minutes-1"><span>0</span></div>
-            </div>
-            <div class="countdown-unit">Minutos</div>
-          </div>
-          
-          <div class="countdown-item"><div class="digits-row">
-              <div class="flip-card" id="seconds-10"><span>0</span></div>
-              <div class="flip-card" id="seconds-1"><span>0</span></div>
-            </div>
-            <div class="countdown-unit">Segundos</div>
-          </div>
+    <div class="countdown-container">
+      <div class="countdown-item">
+        <div class="digits-row">
+          <div class="flip-card" id="days-100"><span>0</span></div>
+          <div class="flip-card" id="days-10"><span>0</span></div>
+          <div class="flip-card" id="days-1"><span>0</span></div>
         </div>
+        <div class="countdown-unit">Dias</div>
       </div>
-
-      <div class="date-highlight">07 de Setembro de 2025</div>
-
-      <!-- Galeria de fotos -->
-      <div class="photos-section">
-        <div class="photo-gallery">
-          <div class="photo-card">
-            <img src="./Images/2017.jpg" alt="2017" class="photo-image" style="object-position: top;">
-            <div class="photo-year">2017</div>
-          </div>
-          <div class="photo-card">
-            <img src="./Images/2018.jpg" alt="2018" class="photo-image">
-            <div class="photo-year">2018</div>
-          </div>
-          <div class="photo-card">
-            <img src="./Images/2019.jpg" alt="2019" class="photo-image">
-            <div class="photo-year">2019</div>
-          </div>
-          <div class="photo-card">
-            <img src="./Images/2020.jpg" alt="2020" class="photo-image">
-            <div class="photo-year">2020</div>
-          </div>
-          <div class="photo-card">
-            <img src="./Images/2021.jpg" alt="2021" class="photo-image" style="object-position: top;">
-            <div class="photo-year">2021</div>
-          </div>
-          <div class="photo-card">
-            <img src="./Images/2022.jpg" alt="2022" class="photo-image" style="object-position: top;">
-            <div class="photo-year">2022</div>
-          </div>
-          <div class="photo-card">
-            <img src="./Images/2023.jpg" alt="2023" class="photo-image">
-            <div class="photo-year">2023</div>
-          </div>
-          <div class="photo-card">
-            <img src="./Images/2024.jpg" alt="2024" class="photo-image" style="object-position: top;">
-            <div class="photo-year">2024</div>
-          </div>
-          <div class="photo-card">
-            <img src="./Images/2025.jpg" alt="2025" class="photo-image" style="object-position: top;">
-            <div class="photo-year">2025</div>
-          </div>
+      <div class="countdown-item">
+        <div class="digits-row">
+          <div class="flip-card" id="hours-10"><span>0</span></div>
+          <div class="flip-card" id="hours-1"><span>0</span></div>
         </div>
+        <div class="countdown-unit">Horas</div>
       </div>
-
-      <!-- Vídeo do YouTube -->
-      <div class="video-section">
-        <h3>Nosso Vídeo</h3>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/k-QNQ1CJWvE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="countdown-item">
+        <div class="digits-row">
+          <div class="flip-card" id="minutes-10"><span>0</span></div>
+          <div class="flip-card" id="minutes-1"><span>0</span></div>
         </div>
+        <div class="countdown-unit">Minutos</div>
       </div>
-
-      <div class="footer">
-        Salve esta página na tela inicial para acompanhar a contagem regressiva para o nosso grande dia! Estamos ansiosos para compartilhar este momento especial com você. ✨
-      </div>
-
-      <button id="install-button">Adicionar à Tela Inicial 📲</button>
-    </div>
-
-    <!-- Aba de Lista de Presentes -->
-    <div class="tab-content" id="gifts-tab">
-      <h3>Lista de Presentes</h3>
-      <p>Escolha um presente para ajudar a tornar nosso dia ainda mais especial!</p>
-
-      <div class="gifts-grid">
-        <!-- 1 -->
-        <div class="gift-card">
-          <img src="./Images/luademel.jpg" alt="Lua de mel" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Para ajudar na lua de mel</div>
-            <div class="gift-price">R$ 200,00</div>
-            <button class="gift-button" data-value="200" data-title="Lua de mel">Presentear</button>
-          </div>
+      <div class="countdown-item">
+        <div class="digits-row">
+          <div class="flip-card" id="seconds-10"><span>0</span></div>
+          <div class="flip-card" id="seconds-1"><span>0</span></div>
         </div>
-
-        <!-- 2 -->
-        <div class="gift-card">
-          <img src="./Images/panosdeprato.jpg" alt="Pano de prato" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Comprar pano de prato</div>
-            <div class="gift-price">R$ 50,00</div>
-            <button class="gift-button" data-value="50" data-title="Pano de prato">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 3 -->
-        <div class="gift-card">
-          <img src="./Images/quadrinhos.jpg" alt="Quadrinhos" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Quadrinhos (O noivo não tem nenhum... coitado)</div>
-            <div class="gift-price">R$ 250,00</div>
-            <button class="gift-button" data-value="250" data-title="Quadrinhos">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 4 -->
-        <div class="gift-card">
-          <img src="./Images/sabredeluz.jpg" alt="Sabre de luz" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Um sabre de luz... Vruuum</div>
-            <div class="gift-price">R$ 100,00</div>
-            <button class="gift-button" data-value="100" data-title="Sabre de luz">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 5 -->
-        <div class="gift-card">
-          <img src="./Images/maquiagens.jpg" alt="Maquiagens" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Maquiagens</div>
-            <div class="gift-price">R$ 250,00</div>
-            <button class="gift-button" data-value="250" data-title="Maquiagens">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 6 -->
-        <div class="gift-card">
-          <img src="./Images/contadeluz.jpg" alt="Conta de luz" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Conta de luz</div>
-            <div class="gift-price">R$ 100,00</div>
-            <button class="gift-button" data-value="100" data-title="Conta de luz">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 7 -->
-        <div class="gift-card">
-          <img src="./Images/metalica.jpg" alt="Show Metallica" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Show de Metallica para o noivo</div>
-            <div class="gift-price">R$ 500,00</div>
-            <button class="gift-button" data-value="500" data-title="Show Metallica">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 8 -->
-        <div class="gift-card">
-          <img src="./Images/brunomars.jpg" alt="Show Bruno Mars" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Show do Bruno Mars para a noiva</div>
-            <div class="gift-price">R$ 500,00</div>
-            <button class="gift-button" data-value="500" data-title="Show Bruno Mars">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 9 -->
-        <div class="gift-card">
-          <img src="./Images/pcgamer.jpg" alt="PC para o noivo" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Novo PC para o noivo... preciso de uma RTX 5090</div>
-            <div class="gift-price">R$ 200,00</div>
-            <button class="gift-button" data-value="200" data-title="PC para o noivo">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 10 -->
-        <div class="gift-card">
-          <img src="./Images/nos.jpg" alt="Paciência com o noivo" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Para aguentar o noivo para o resto da vida</div>
-            <div class="gift-price">R$ 250,00</div>
-            <button class="gift-button" data-value="250" data-title="Paciência com o noivo">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 11 -->
-        <div class="gift-card">
-          <img src="./Images/bebidas.jpg" alt="Drinks" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Drinks para o dia do casamento</div>
-            <div class="gift-price">R$ 100,00</div>
-            <button class="gift-button" data-value="100" data-title="Drinks">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 12 -->
-        <div class="gift-card">
-          <img src="./Images/spfc.jpg" alt="Ingressos SPFC" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Ingressos do SPFC</div>
-            <div class="gift-price">R$ 50,00</div>
-            <button class="gift-button" data-value="50" data-title="Ingressos SPFC">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 13 -->
-        <div class="gift-card">
-          <img src="./Images/max.jpg" alt="Max" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">1 ano de Max</div>
-            <div class="gift-price">R$ 350,00</div>
-            <button class="gift-button" data-value="350" data-title="Max">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 14 -->
-        <div class="gift-card">
-          <img src="./Images/aluguel.jpg" alt="Aluguel" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">14 meses de aluguel</div>
-            <div class="gift-price">R$ 1000,00</div>
-            <button class="gift-button" data-value="1000" data-title="Aluguel">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 15 -->
-        <div class="gift-card">
-          <img src="./Images/aposentadoria.jpg" alt="Aposentadoria" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Aposentadoria mais cedo</div>
-            <div class="gift-price">R$ 500,00</div>
-            <button class="gift-button" data-value="500" data-title="Aposentadoria">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 16 -->
-        <div class="gift-card">
-          <img src="./Images/aviao.jpg" alt="Aviãozinho" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Aviãozinho do Silvio Santos</div>
-            <div class="gift-price">R$ 50,00</div>
-            <button class="gift-button" data-value="50" data-title="A останов
-
-viãozinho">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 17 -->
-        <div class="gift-card">
-          <img src="./Images/mudanca.jpg" alt="Mudança" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Mudança de Apto</div>
-            <div class="gift-price">R$ 150,00</div>
-            <button class="gift-button" data-value="150" data-title="Mudança">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 18 -->
-        <div class="gift-card">
-          <img src="./Images/ndeinada.jpg" alt="Presente simbólico" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Só para não dizer que eu não dei nada</div>
-            <div class="gift-price">R$ 30,00</div>
-            <button class="gift-button" data-value="30" data-title="Presente simbólico">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 19 -->
-        <div class="gift-card">
-          <img src="./Images/reforma.jpg" alt="Reforma" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Chá de reforma no novo apto</div>
-            <div class="gift-price">R$ 500,00</div>
-            <button class="gift-button" data-value="500" data-title="Reforma">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 20 -->
-        <div class="gift-card">
-          <img src="./Images/camisaspfc.jpg" alt="Camisa SPFC" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Camisa nova do SPFC para os noivos</div>
-            <div class="gift-price">R$ 450,00</div>
-            <button class="gift-button" data-value="450" data-title="Camisa SPFC">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 21 -->
-        <div class="gift-card">
-          <img src="./Images/rolo.jpg" alt="Rolo de macarrão" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Rolo de macarrão para a noiva</div>
-            <div class="gift-price">R$ 150,00</div>
-            <button class="gift-button" data-value="150" data-title="Rolo de macarrão">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 22 -->
-        <div class="gift-card">
-          <img src="./Images/capacete.jpg" alt="Capacete" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Capacete contra o rolo de macarrão</div>
-            <div class="gift-price">R$ 150,00</div>
-            <button class="gift-button" data-value="150" data-title="Capacete">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 23 -->
-        <div class="gift-card">
-          <img src="./Images/fatura.jpg" alt="Fatura do cartão" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Fatura do cartão de crédito</div>
-            <div class="gift-price">R$ 120,00</div>
-            <button class="gift-button" data-value="120" data-title="Fatura do cartão">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 24 -->
-        <div class="gift-card">
-          <img src="./Images/theking.jpg" alt="Selo de bets" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Selo de "of the king the power the bets"</div>
-            <div class="gift-price">R$ 250,00</div>
-            <button class="gift-button" data-value="250" data-title="Selo de bets">Presentear</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal para o QR Code de pagamento -->
-    <div class="modal" id="payment-modal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h3>Presentear os Noivos</h3>
-        <p id="modal-gift-description">Presente: <span id="gift-title">-</span></p>
-        <p id="modal-gift-value">Valor: <span id="gift-value">-</span></p>
-        <div class="qr-code-placeholder">
-          QR Code do PIX
-        </div>
-        <p>Escaneie o QR Code acima para fazer o PIX</p>
-        <p>Ou use a chave PIX: <strong>email@exemplo.com</strong></p>
+        <div class="countdown-unit">Segundos</div>
       </div>
     </div>
   </div>
 
   <script>
-    // Configuração da data do casamento (formato: ano, mês-1, dia, hora, minuto)
-    const weddingDate = new Date(2025, 8, 7, 16, 0, 0); // 7 de setembro de 2025 às 16h
+    const weddingDate = new Date(2025, 8, 7, 16, 0, 0);
 
-    // Função para atualizar a contagem regressiva
     function updateCountdown() {
       const now = new Date();
       const diff = weddingDate - now;
+      if (diff <= 0) return;
 
-      // Se a data já passou, mostra zeros
-      if (diff <= 0) {
-        document.getElementById('days-100').querySelector('span').textContent = '0';
-        document.getElementById('days-10').querySelector('span').textContent = '0';
-        document.getElementById('days-1').querySelector('span').textContent = '0';
-        document.getElementById('hours-10').querySelector('span').textContent = '0';
-        document.getElementById('hours-1').querySelector('span').textContent = '0';
-        document.getElementById('minutes-10').querySelector('span').textContent = '0';
-        document.getElementById('minutes-1').querySelector('span').textContent = '0';
-        document.getElementById('seconds-10').querySelector('span').textContent = '0';
-        document.getElementById('seconds-1').querySelector('span').textContent = '0';
-        return;
-      }
-
-      // Calcula dias, horas, minutos e segundos
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      // Atualiza os elementos do contador
       const daysStr = days.toString().padStart(3, '0');
       const hoursStr = hours.toString().padStart(2, '0');
       const minutesStr = minutes.toString().padStart(2, '0');
@@ -960,117 +187,8 @@ viãozinho">Presentear</button>
       document.getElementById('seconds-1').querySelector('span').textContent = secondsStr[1];
     }
 
-    // Atualiza a contagem regressiva a cada segundo
-    updateCountdown(); // Executa imediatamente
-    setInterval(updateCountdown, 1000); // Depois atualiza a cada segundo
-
-    // Navegação entre abas
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        // Remove a classe active de todas as abas
-        tabs.forEach(t => t.classList.remove('active'));
-        // Adiciona a classe active na aba clicada
-        tab.classList.add('active');
-        
-        // Esconde todos os conteúdos
-        document.querySelectorAll('.tab-content').forEach(content => {
-          content.classList.remove('active');
-        });
-        
-        // Mostra o conteúdo da aba selecionada
-        const tabId = tab.getAttribute('data-tab');
-        document.getElementById(tabId + '-tab').classList.add('active');
-      });
-    });
-
-    // Modal para pagamento
-    const modal = document.getElementById('payment-modal');
-    const giftButtons = document.querySelectorAll('.gift-button');
-    const closeModal = document.querySelector('.close-modal');
-
-    giftButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const giftTitle = button.getAttribute('data-title');
-        const giftValue = button.getAttribute('data-value');
-        
-        document.getElementById('gift-title').textContent = giftTitle;
-        document.getElementById('gift-value').textContent = `R$ ${giftValue},00`;
-        
-        modal.style.display = 'flex';
-      });
-    });
-
-    closeModal.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
-
-    // Criar corações animados no fundo
-    function createHearts() {
-      const container = document.getElementById('hearts-container');
-      const heartCount = 20;
-      
-      for (let i = 0; i < heartCount; i++) {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        
-        // Posição aleatória
-        const left = Math.random() * 100;
-        heart.style.left = `${left}%`;
-        
-        // Duração aleatória
-        const duration = Math.random() * 15 + 10; // Entre 10 e 25 segundos
-        heart.style.animation = `fall ${duration}s linear infinite`;
-        
-        // Atraso aleatório
-        const delay = Math.random() * 15;
-        heart.style.animationDelay = `${delay}s`;
-        
-        // Tamanho aleatório
-        const size = Math.random() * 15 + 10; // Entre 10 e 25 pixels
-        heart.style.width = `${size}px`;
-        heart.style.height = `${size}px`;
-        
-        container.appendChild(heart);
-      }
-    }
-
-    createHearts();
-
-    // PWA Install Button
-    let deferredPrompt;
-    const installButton = document.getElementById('install-button');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      // Impede que o mini-infobar apareça em celulares
-      e.preventDefault();
-      // Armazena o evento para que possa ser acionado mais tarde
-      deferredPrompt = e;
-      // Exibe o botão de instalação
-      installButton.style.display = 'block';
-    });
-
-    installButton.addEventListener('click', async () => {
-      if (!deferredPrompt) {
-        return;
-      }
-      // Mostra o prompt de instalação
-      deferredPrompt.prompt();
-      // Espera pela escolha do usuário
-      const { outcome } = await deferredPrompt.userChoice;
-      // Registra a escolha do usuário
-      console.log(`User ${outcome} the app installation`);
-      // Limpa a referência
-      deferredPrompt = null;
-      // Esconde o botão
-      installButton.style.display = 'none';
-    });
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
