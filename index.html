@@ -277,10 +277,10 @@
     }
 
     .photo-image {
+      height: 180px;
       width: 100%;
-      max-height: 180px;
-      object-fit: contain;
-      display: block;
+      object-fit: cover;
+      object-position: center; /* Default position */
     }
 
     .photo-year {
@@ -337,10 +337,10 @@
     }
 
     .gift-image {
+      height: 180px;
       width: 100%;
-      max-height: 180px;
-      object-fit: contain;
-      display: block;
+      object-fit: cover;
+      object-position: center; /* Default position */
     }
 
     .gift-info {
@@ -527,7 +527,7 @@
       }
       
       .gifts-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1frmentalidade: repeat(auto-fill, minmax(250px, 1fr));
       }
       
       .photo-gallery {
@@ -566,7 +566,7 @@
             <div class="countdown-unit">Dias</div>
           </div>
           
-          <div class="countdown-item">
+　　　　　　<div class="countdown-item">
             <div class="digits-row">
               <div class="flip-card" id="hours-10"><span>0</span></div>
               <div class="flip-card" id="hours-1"><span>0</span></div>
@@ -598,7 +598,7 @@
       <div class="photos-section">
         <div class="photo-gallery">
           <div class="photo-card">
-            <img src="./Images/2017.jpg" alt="2017" class="photo-image">
+            <img src="./Images/2017.jpg" alt="2017" class="photo-image" style="object-position: top;">
             <div class="photo-year">2017</div>
           </div>
           <div class="photo-card">
@@ -606,7 +606,7 @@
             <div class="photo-year">2018</div>
           </div>
           <div class="photo-card">
-            <img src="./Images/2019.jpg" alt="2019" class="photo-image">
+            <img src="./Images/2019.jpg" alt="2019" class="photo-image" style="object-position: bottom;">
             <div class="photo-year">2019</div>
           </div>
           <div class="photo-card">
@@ -614,7 +614,7 @@
             <div class="photo-year">2020</div>
           </div>
           <div class="photo-card">
-            <img src="./Images/2021.jpg" alt="2021" class="photo-image">
+            <img src="./Images/2021.jpg" alt="2021" class="photo-image" style="object-position: left;">
             <div class="photo-year">2021</div>
           </div>
           <div class="photo-card">
@@ -626,7 +626,7 @@
             <div class="photo-year">2023</div>
           </div>
           <div class="photo-card">
-            <img src="./Images/2024.jpg" alt="2024" class="photo-image">
+            <img src="./Images/2024.jpg" alt="2024" class="photo-image" style="object-position: 20% 30%;">
             <div class="photo-year">2024</div>
           </div>
           <div class="photo-card">
@@ -669,7 +669,7 @@
 
         <!-- 2 -->
         <div class="gift-card">
-          <img src="./Images/panosdeprato.jpg" alt="Pano de prato" class="gift-image">
+          <img src="./Images/panosdeprato.jpg" alt="Pano de prato" class="gift-image" style="object-position: top;">
           <div class="gift-info">
             <div class="gift-title">Comprar pano de prato</div>
             <div class="gift-price">R$ 50,00</div>
@@ -689,7 +689,7 @@
 
         <!-- 4 -->
         <div class="gift-card">
-          <img src="./Images/sabredeluz.jpg" alt="Sabre de luz" class="gift-image">
+          <img src="./Images/sabredeluz.jpg" alt="Sabre de luz" class="gift-image" style="object-position: center;">
           <div class="gift-info">
             <div class="gift-title">Um sabre de luz... Vruuum</div>
             <div class="gift-price">R$ 100,00</div>
@@ -709,7 +709,7 @@
 
         <!-- 6 -->
         <div class="gift-card">
-          <img src="./Images/contadeluz.jpg" alt="Conta de luz" class="gift-image">
+          <img src="./Images/contadeluz.jpg" alt="Conta de luz" class="gift-image" style="object-position: bottom;">
           <div class="gift-info">
             <div class="gift-title">Conta de luz</div>
             <div class="gift-price">R$ 100,00</div>
@@ -718,6 +718,7 @@
         </div>
 
         <!-- 7 -->
+        <.......>
         <div class="gift-card">
           <img src="./Images/metalica.jpg" alt="Show Metallica" class="gift-image">
           <div class="gift-info">
@@ -902,7 +903,7 @@
     <!-- Modal para o QR Code de pagamento -->
     <div class="modal" id="payment-modal">
       <div class="modal-content">
-        <span class="close-modal">&times;</span>
+        <span class="close-modal">×</span>
         <h3>Presentear os Noivos</h3>
         <p id="modal-gift-description">Presente: <span id="gift-title">-</span></p>
         <p id="modal-gift-value">Valor: <span id="gift-value">-</span></p>
