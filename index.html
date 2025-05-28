@@ -144,6 +144,7 @@
     .tab-content {
       width: 100%;
       display: none;
+      text-align: center;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity var(--tab-transition), transform var(--tab-transition);
@@ -546,6 +547,7 @@
 
     <div class="tabs">
       <div class="tab active" data-tab="countdown">Contagem Regressiva</div>
+      <div class="tab" data-tab="location">Localização</div>
       <div class="tab" data-tab="gifts">Lista de Presentes</div>
     </div>
 
@@ -591,20 +593,7 @@
 
       <div class="date-highlight">07 de Setembro de 2025</div>
 
-      <!-- ← INSERIR AQUI: Local e Horário -->
-      <div class="event-info" style="margin: 30px 0; text-align:left;">
-        <h3 style="font-family: 'Playfair Display', serif; color: var(--primary);">Local & Horário</h3>
-        <p style="font-size:1rem; color: var(--light-text); margin-bottom:10px;">
-          ⏰ 10:00 – 07/09/2025
-        </p>
-        <!-- SUBSTITUA o URL abaixo pelo link de incorporação do Google Maps do seu local -->
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.7308483494216!2d-46.734742399999995!3d-23.4701712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef9590613ef6f%3A0xcd7e8eb35a93ec53!2sJaragu%C3%A1%20Clube%20Campestre!5e0!3m2!1spt-BR!2sbr!4v1747594648718!5m2!1spt-BR!2sbr"
-          width="100%" height="300" style="border:0; border-radius:15px;"
-          allowfullscreen="" loading="lazy">
-        </iframe>
-      </div>
-
+     
       <!-- Galeria de fotos -->
       <div class="photos-section">
         <div class="photo-gallery">
@@ -662,6 +651,26 @@
       <button id="install-button">Adicionar à Tela Inicial 📲</button>
     </div>
 
+    <!-- Aba de Localização -->
+    <div class="tab-content" id="location-tab" style="text-align: center;">
+      <h3>Local & Horário</h3>
+      <div class="date-highlight" style="margin: 20px 0;">
+        ⏰ 10:00 – 07 de Setembro de 2025
+      </div>
+      <div style="margin: 30px 0;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.7308483494216!2d-46.734742399999995!3d-23.4701712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef9590613ef6f%3A0xcd7e8eb35a93ec53!2sJaragu%C3%A1%20Clube%20Campestre!5e0!3m2!1spt-BR!2sbr!4v1747594648718!5m2!1spt-BR!2sbr"
+          width="100%" height="400" style="border:0; border-radius:15px; max-width: 600px;"
+          allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+      <div style="margin-top: 20px; font-size: 1.1rem; color: var(--light-text);">
+        <strong>Jaragua Clube Campestre</strong><br>
+        Estrada do Jaragua, 1000 - Jaragua<br>
+        São Paulo - SP
+      </div>
+    </div>
+    
     <!-- Aba de Lista de Presentes -->
     <div class="tab-content" id="gifts-tab">
       <h3>Lista de Presentes</h3>
@@ -919,11 +928,14 @@ viãozinho">Presentear</button>
         <h3>Presentear os Noivos</h3>
         <p id="modal-gift-description">Presente: <span id="gift-title">-</span></p>
         <p id="modal-gift-value">Valor: <span id="gift-value">-</span></p>
-        <div class="qr-code-placeholder">
-          QR Code do PIX
+        <div style="text-align: center;">
+          <img src="./Images/qrcode.png" alt="QR Code PIX" style="width: 250px; height: 250px; border-radius: 10px; margin: 20px auto;">
         </div>
-        <p>Escaneie o QR Code acima para fazer o PIX</p>
-        <p>Ou use a chave PIX: <strong>email@exemplo.com</strong></p>
+        <p style="text-align: center;">Escaneie o QR Code acima para fazer o PIX</p>
+        <p style="text-align: center; margin: 15px 0;">Ou use a chave PIX: <strong id="pix-key">40167840851</strong></p>
+        <button onclick="copyPixKey()" style="background-color: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 0.9rem;">
+          📋 Copiar Chave PIX
+        </button>
       </div>
     </div>
   </div>
@@ -1085,6 +1097,23 @@ viãozinho">Presentear</button>
       // Esconde o botão
       installButton.style.display = 'none';
     });
+    // Função para copiar chave PIX
+    function copyPixKey() {
+      const pixKey = document.getElementById('pix-key').textContent;
+      navigator.clipboard.writeText(pixKey).then(() => {
+        alert('Chave PIX copiada!');
+      }).catch(err => {
+        console.error('Erro ao copiar: ', err);
+        // Fallback para navegadores mais antigos
+        const textArea = document.createElement('textarea');
+        textArea.value = pixKey;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Chave PIX copiada!');
+      });
+    }
   </script>
 </body>
 </html>
