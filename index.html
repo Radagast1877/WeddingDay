@@ -244,12 +244,14 @@
     }
 
     .footer {
-      margin-top: 30px;
+      margin: 30px auto;
       font-size: 1rem;
       color: var(--light-text);
       max-width: 80%;
-      line-height: 1.6
-      text-align: center;
+      line-height: 1.6;
+      text-align: center !important;
+      display: block;
+      clear: both;
     }
 
     /* Área de fotos */
@@ -645,7 +647,7 @@
         </div>
       </div>
 
-      <div class="footer" style="text-align: center;">
+      <div class="footer" style="text-align: center !important; margin: 30px auto; display: block; clear: both;">
         Salve esta página na tela inicial para acompanhar a contagem regressiva para o nosso grande dia! Estamos ansiosos para compartilhar este momento especial com você. ✨
       </div>
 
@@ -830,13 +832,11 @@
 
         <!-- 16 -->
         <div class="gift-card">
-          <img src="./Images/aviao.jpg" alt="Aviãozinho" class="gift-image" style="object-position: top;">
+          <img src="./Images/aviao.jpg" alt="Aviãozinho" class="gift-image">
           <div class="gift-info">
             <div class="gift-title">Aviãozinho do Silvio Santos</div>
             <div class="gift-price">R$ 50,00</div>
-            <button class="gift-button" data-value="50" data-title="A останов
-
-viãozinho">Presentear</button>
+            <button class="gift-button" data-value="50" data-title="Aviãozinho">Presentear</button>
           </div>
         </div>
 
