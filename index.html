@@ -115,6 +115,7 @@
       margin: 20px 0 40px;
       gap: 10px;
       width: 100%;
+      flex-wrap: wrap; /* Adicionado para responsividade */
     }
 
     .tab {
@@ -285,6 +286,18 @@
       width: 100%;
       object-fit: cover;
     }
+    
+    .photo-placeholder {
+      height: 180px;
+      width: 100%;
+      background-color: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ccc;
+      font-size: 2rem;
+      font-family: 'Playfair Display', serif;
+    }
 
     .photo-year {
       padding: 20px;
@@ -411,18 +424,72 @@
       cursor: pointer;
       color: var(--light-text);
     }
-
-    .qr-code-placeholder {
-      width: 250px;
-      height: 250px;
-      background-color: #f2f2f2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 20px auto;
-      border-radius: 10px;
-      border: 2px dashed #ccc;
+    
+    /* Estilos da nova aba Dia dos Namorados */
+    .valentines-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        max-width: 650px;
+        margin: 0 auto 40px;
+        color: var(--light-text);
     }
+    
+    #game-container {
+        margin: 30px auto;
+        position: relative;
+        width: 302px; /* Largura do canvas + bordas */
+        height: 302px; /* Altura do canvas + bordas */
+    }
+
+    #maze-canvas {
+        border: 1px solid var(--primary);
+        background-color: #fff;
+        cursor: grab;
+    }
+    
+    #maze-canvas:active {
+        cursor: grabbing;
+    }
+
+    #win-message {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.9);
+        display: none; /* Começa escondido */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        border-radius: 15px;
+    }
+    
+    #win-message p {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        color: var(--primary);
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    #reset-game-btn {
+        padding: 10px 20px;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #reset-game-btn:hover {
+        background-color: var(--accent);
+    }
+
 
     .hearts {
       position: absolute;
@@ -519,20 +586,12 @@
         font-size: 1.5rem;
       }
       
-      .tabs {
-        flex-wrap: wrap;
-      }
-      
       .tab {
         padding: 10px 20px;
         font-size: 0.9rem;
       }
       
-      .gifts-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .photo-gallery {
+      .gifts-grid, .photo-gallery {
         grid-template-columns: 1fr;
       }
     }
@@ -550,11 +609,11 @@
 
     <div class="tabs">
       <div class="tab active" data-tab="countdown">Contagem Regressiva</div>
+      <div class="tab" data-tab="valentines">Dia dos Namorados</div>
       <div class="tab" data-tab="location">Localização</div>
       <div class="tab" data-tab="gifts">Lista de Presentes</div>
     </div>
 
-    <!-- Aba de Contagem Regressiva -->
     <div class="tab-content active" id="countdown-tab">
       <div class="countdown-wrapper">
         <div class="countdown-label">Faltam apenas</div>
@@ -595,9 +654,7 @@
       </div>
 
       <div class="date-highlight">07 de Setembro de 2025</div>
-
      
-      <!-- Galeria de fotos -->
       <div class="photos-section">
         <div class="photo-gallery">
           <div class="photo-card">
@@ -639,7 +696,6 @@
         </div>
       </div>
 
-      <!-- Vídeo do YouTube -->
       <div class="video-section">
         <h3>Nosso Vídeo</h3>
         <div class="video-container">
@@ -653,8 +709,45 @@
 
       <button id="install-button">Adicionar à Tela Inicial 📲</button>
     </div>
+    
+    <div class="tab-content" id="valentines-tab">
+      <h3>Feliz Dia dos Namorados, Meu Amor!</h3>
+      <p class="valentines-text">
+        Neste dia especial, quero celebrar a nossa jornada. Cada risada, cada sonho compartilhado e cada desafio que superamos juntos só fortaleceu o que sentimos. Olhar para o futuro e ver você ao meu lado é a maior certeza que tenho. Você é meu porto seguro, minha aventura favorita e o amor da minha vida. Que venham todos os dias dos namorados do mundo para celebrarmos juntos!
+      </p>
 
-    <!-- Aba de Localização -->
+      <div class="photos-section">
+        <h3>Nossos Momentos</h3>
+        <div class="photo-gallery">
+          <div class="photo-card">
+            <div class="photo-placeholder">+</div>
+            <div class="photo-year">Primeiro Encontro</div>
+          </div>
+          <div class="photo-card">
+            <div class="photo-placeholder">+</div>
+            <div class="photo-year">Aquela Viagem</div>
+          </div>
+          <div class="photo-card">
+            <div class="photo-placeholder">+</div>
+            <div class="photo-year">Um Dia Especial</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-section">
+        <h3>Um Presente para Você</h3>
+        <p style="margin-bottom: 20px;">Complete o labirinto para ganhar uma surpresa!</p>
+        <div id="game-container">
+            <canvas id="maze-canvas" width="300" height="300"></canvas>
+            <div id="win-message">
+                <p>Parabéns, você acaba de ganhar um date com o mozão no final de semana!</p>
+                <button id="reset-game-btn">Jogar de Novo</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
     <div class="tab-content" id="location-tab" style="text-align: center;">
       <h3>Local & Horário</h3>
       <div class="date-highlight" style="margin: 20px 0;">
@@ -674,258 +767,41 @@
       </div>
     </div>
     
-    <!-- Aba de Lista de Presentes -->
     <div class="tab-content" id="gifts-tab">
-      <h3>Lista de Presentes</h3>
-      <p>Escolha um presente para ajudar a tornar nosso dia ainda mais especial!</p>
-
-      <div class="gifts-grid">
-        <!-- 1 -->
-        <div class="gift-card">
-          <img src="./Images/luademel.jpg" alt="Lua de mel" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Para ajudar na lua de mel</div>
-            <div class="gift-price">R$ 200,00</div>
-            <button class="gift-button" data-value="200" data-title="Lua de mel">Presentear</button>
-          </div>
+        <h3>Lista de Presentes</h3>
+        <p>Escolha um presente para ajudar a tornar nosso dia ainda mais especial!</p>
+        <div class="gifts-grid">
+            <div class="gift-card"><img src="./Images/luademel.jpg" alt="Lua de mel" class="gift-image"><div class="gift-info"><div class="gift-title">Para ajudar na lua de mel</div><div class="gift-price">R$ 200,00</div><button class="gift-button" data-value="200" data-title="Lua de mel">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/panosdeprato.jpg" alt="Pano de prato" class="gift-image"><div class="gift-info"><div class="gift-title">Comprar pano de prato</div><div class="gift-price">R$ 50,00</div><button class="gift-button" data-value="50" data-title="Pano de prato">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/quadrinhos.jpg" alt="Quadrinhos" class="gift-image"><div class="gift-info"><div class="gift-title">Quadrinhos (O noivo não tem nenhum... coitado)</div><div class="gift-price">R$ 250,00</div><button class="gift-button" data-value="250" data-title="Quadrinhos">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/sabredeluz.jpg" alt="Sabre de luz" class="gift-image"><div class="gift-info"><div class="gift-title">Um sabre de luz... Vruuum</div><div class="gift-price">R$ 100,00</div><button class="gift-button" data-value="100" data-title="Sabre de luz">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/maquiagens.jpg" alt="Maquiagens" class="gift-image"><div class="gift-info"><div class="gift-title">Maquiagens</div><div class="gift-price">R$ 250,00</div><button class="gift-button" data-value="250" data-title="Maquiagens">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/contadeluz.jpg" alt="Conta de luz" class="gift-image"><div class="gift-info"><div class="gift-title">Conta de luz</div><div class="gift-price">R$ 100,00</div><button class="gift-button" data-value="100" data-title="Conta de luz">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/metalica.jpg" alt="Show Metallica" class="gift-image"><div class="gift-info"><div class="gift-title">Show de Metallica para o noivo</div><div class="gift-price">R$ 500,00</div><button class="gift-button" data-value="500" data-title="Show Metallica">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/brunomars.jpg" alt="Show Bruno Mars" class="gift-image"><div class="gift-info"><div class="gift-title">Show do Bruno Mars para a noiva</div><div class="gift-price">R$ 500,00</div><button class="gift-button" data-value="500" data-title="Show Bruno Mars">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/pcgamer.jpg" alt="PC para o noivo" class="gift-image"><div class="gift-info"><div class="gift-title">Novo PC para o noivo... preciso de uma RTX 5090</div><div class="gift-price">R$ 200,00</div><button class="gift-button" data-value="200" data-title="PC para o noivo">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/nos.jpg" alt="Paciência com o noivo" class="gift-image" style="object-position: top;"><div class="gift-info"><div class="gift-title">Para aguentar o noivo para o resto da vida</div><div class="gift-price">R$ 250,00</div><button class="gift-button" data-value="250" data-title="Paciência com o noivo">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/bebidas.jpg" alt="Drinks" class="gift-image"><div class="gift-info"><div class="gift-title">Drinks para o dia do casamento</div><div class="gift-price">R$ 100,00</div><button class="gift-button" data-value="100" data-title="Drinks">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/spfc.jpg" alt="Ingressos SPFC" class="gift-image"><div class="gift-info"><div class="gift-title">Ingressos do SPFC</div><div class="gift-price">R$ 50,00</div><button class="gift-button" data-value="50" data-title="Ingressos SPFC">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/max.jpg" alt="Max" class="gift-image"><div class="gift-info"><div class="gift-title">1 ano de Max</div><div class="gift-price">R$ 350,00</div><button class="gift-button" data-value="350" data-title="Max">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/aluguel.jpg" alt="Aluguel" class="gift-image"><div class="gift-info"><div class="gift-title">14 meses de aluguel</div><div class="gift-price">R$ 1000,00</div><button class="gift-button" data-value="1000" data-title="Aluguel">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/aposentadoria.jpg" alt="Aposentadoria" class="gift-image"><div class="gift-info"><div class="gift-title">Aposentadoria mais cedo</div><div class="gift-price">R$ 500,00</div><button class="gift-button" data-value="500" data-title="Aposentadoria">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/aviao.jpg" alt="Aviãozinho" class="gift-image"><div class="gift-info"><div class="gift-title">Aviãozinho do Silvio Santos</div><div class="gift-price">R$ 50,00</div><button class="gift-button" data-value="50" data-title="Aviãozinho">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/mudanca.jpg" alt="Mudança" class="gift-image"><div class="gift-info"><div class="gift-title">Mudança de Apto</div><div class="gift-price">R$ 150,00</div><button class="gift-button" data-value="150" data-title="Mudança">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/ndeinada.jpg" alt="Presente simbólico" class="gift-image" style="object-position: top;"><div class="gift-info"><div class="gift-title">Só para não dizer que eu não dei nada</div><div class="gift-price">R$ 30,00</div><button class="gift-button" data-value="30" data-title="Presente simbólico">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/reforma.jpg" alt="Reforma" class="gift-image"><div class="gift-info"><div class="gift-title">Chá de reforma no novo apto</div><div class="gift-price">R$ 500,00</div><button class="gift-button" data-value="500" data-title="Reforma">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/camisaspfc.jpg" alt="Camisa SPFC" class="gift-image"><div class="gift-info"><div class="gift-title">Camisa nova do SPFC para os noivos</div><div class="gift-price">R$ 450,00</div><button class="gift-button" data-value="450" data-title="Camisa SPFC">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/rolo.jpg" alt="Rolo de macarrão" class="gift-image"><div class="gift-info"><div class="gift-title">Rolo de macarrão para a noiva</div><div class="gift-price">R$ 150,00</div><button class="gift-button" data-value="150" data-title="Rolo de macarrão">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/capacete.jpg" alt="Capacete" class="gift-image"><div class="gift-info"><div class="gift-title">Capacete contra o rolo de macarrão</div><div class="gift-price">R$ 150,00</div><button class="gift-button" data-value="150" data-title="Capacete">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/fatura.jpg" alt="Fatura do cartão" class="gift-image"><div class="gift-info"><div class="gift-title">Fatura do cartão de crédito</div><div class="gift-price">R$ 120,00</div><button class="gift-button" data-value="120" data-title="Fatura do cartão">Presentear</button></div></div>
+            <div class="gift-card"><img src="./Images/theking.jpg" alt="Selo de bets" class="gift-image" style="object-position: top;"><div class="gift-info"><div class="gift-title">Selo de "of the king the power the bets"</div><div class="gift-price">R$ 250,00</div><button class="gift-button" data-value="250" data-title="Selo de bets">Presentear</button></div></div>
         </div>
-
-        <!-- 2 -->
-        <div class="gift-card">
-          <img src="./Images/panosdeprato.jpg" alt="Pano de prato" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Comprar pano de prato</div>
-            <div class="gift-price">R$ 50,00</div>
-            <button class="gift-button" data-value="50" data-title="Pano de prato">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 3 -->
-        <div class="gift-card">
-          <img src="./Images/quadrinhos.jpg" alt="Quadrinhos" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Quadrinhos (O noivo não tem nenhum... coitado)</div>
-            <div class="gift-price">R$ 250,00</div>
-            <button class="gift-button" data-value="250" data-title="Quadrinhos">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 4 -->
-        <div class="gift-card">
-          <img src="./Images/sabredeluz.jpg" alt="Sabre de luz" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Um sabre de luz... Vruuum</div>
-            <div class="gift-price">R$ 100,00</div>
-            <button class="gift-button" data-value="100" data-title="Sabre de luz">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 5 -->
-        <div class="gift-card">
-          <img src="./Images/maquiagens.jpg" alt="Maquiagens" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Maquiagens</div>
-            <div class="gift-price">R$ 250,00</div>
-            <button class="gift-button" data-value="250" data-title="Maquiagens">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 6 -->
-        <div class="gift-card">
-          <img src="./Images/contadeluz.jpg" alt="Conta de luz" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Conta de luz</div>
-            <div class="gift-price">R$ 100,00</div>
-            <button class="gift-button" data-value="100" data-title="Conta de luz">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 7 -->
-        <div class="gift-card">
-          <img src="./Images/metalica.jpg" alt="Show Metallica" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Show de Metallica para o noivo</div>
-            <div class="gift-price">R$ 500,00</div>
-            <button class="gift-button" data-value="500" data-title="Show Metallica">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 8 -->
-        <div class="gift-card">
-          <img src="./Images/brunomars.jpg" alt="Show Bruno Mars" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Show do Bruno Mars para a noiva</div>
-            <div class="gift-price">R$ 500,00</div>
-            <button class="gift-button" data-value="500" data-title="Show Bruno Mars">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 9 -->
-        <div class="gift-card">
-          <img src="./Images/pcgamer.jpg" alt="PC para o noivo" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Novo PC para o noivo... preciso de uma RTX 5090</div>
-            <div class="gift-price">R$ 200,00</div>
-            <button class="gift-button" data-value="200" data-title="PC para o noivo">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 10 -->
-        <div class="gift-card">
-          <img src="./Images/nos.jpg" alt="Paciência com o noivo" class="gift-image" style="object-position: top;">
-          <div class="gift-info">
-            <div class="gift-title">Para aguentar o noivo para o resto da vida</div>
-            <div class="gift-price">R$ 250,00</div>
-            <button class="gift-button" data-value="250" data-title="Paciência com o noivo">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 11 -->
-        <div class="gift-card">
-          <img src="./Images/bebidas.jpg" alt="Drinks" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Drinks para o dia do casamento</div>
-            <div class="gift-price">R$ 100,00</div>
-            <button class="gift-button" data-value="100" data-title="Drinks">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 12 -->
-        <div class="gift-card">
-          <img src="./Images/spfc.jpg" alt="Ingressos SPFC" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Ingressos do SPFC</div>
-            <div class="gift-price">R$ 50,00</div>
-            <button class="gift-button" data-value="50" data-title="Ingressos SPFC">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 13 -->
-        <div class="gift-card">
-          <img src="./Images/max.jpg" alt="Max" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">1 ano de Max</div>
-            <div class="gift-price">R$ 350,00</div>
-            <button class="gift-button" data-value="350" data-title="Max">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 14 -->
-        <div class="gift-card">
-          <img src="./Images/aluguel.jpg" alt="Aluguel" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">14 meses de aluguel</div>
-            <div class="gift-price">R$ 1000,00</div>
-            <button class="gift-button" data-value="1000" data-title="Aluguel">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 15 -->
-        <div class="gift-card">
-          <img src="./Images/aposentadoria.jpg" alt="Aposentadoria" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Aposentadoria mais cedo</div>
-            <div class="gift-price">R$ 500,00</div>
-            <button class="gift-button" data-value="500" data-title="Aposentadoria">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 16 -->
-        <div class="gift-card">
-          <img src="./Images/aviao.jpg" alt="Aviãozinho" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Aviãozinho do Silvio Santos</div>
-            <div class="gift-price">R$ 50,00</div>
-            <button class="gift-button" data-value="50" data-title="Aviãozinho">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 17 -->
-        <div class="gift-card">
-          <img src="./Images/mudanca.jpg" alt="Mudança" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Mudança de Apto</div>
-            <div class="gift-price">R$ 150,00</div>
-            <button class="gift-button" data-value="150" data-title="Mudança">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 18 -->
-        <div class="gift-card">
-          <img src="./Images/ndeinada.jpg" alt="Presente simbólico" class="gift-image" style="object-position: top;">
-          <div class="gift-info">
-            <div class="gift-title">Só para não dizer que eu não dei nada</div>
-            <div class="gift-price">R$ 30,00</div>
-            <button class="gift-button" data-value="30" data-title="Presente simbólico">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 19 -->
-        <div class="gift-card">
-          <img src="./Images/reforma.jpg" alt="Reforma" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Chá de reforma no novo apto</div>
-            <div class="gift-price">R$ 500,00</div>
-            <button class="gift-button" data-value="500" data-title="Reforma">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 20 -->
-        <div class="gift-card">
-          <img src="./Images/camisaspfc.jpg" alt="Camisa SPFC" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Camisa nova do SPFC para os noivos</div>
-            <div class="gift-price">R$ 450,00</div>
-            <button class="gift-button" data-value="450" data-title="Camisa SPFC">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 21 -->
-        <div class="gift-card">
-          <img src="./Images/rolo.jpg" alt="Rolo de macarrão" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Rolo de macarrão para a noiva</div>
-            <div class="gift-price">R$ 150,00</div>
-            <button class="gift-button" data-value="150" data-title="Rolo de macarrão">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 22 -->
-        <div class="gift-card">
-          <img src="./Images/capacete.jpg" alt="Capacete" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Capacete contra o rolo de macarrão</div>
-            <div class="gift-price">R$ 150,00</div>
-            <button class="gift-button" data-value="150" data-title="Capacete">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 23 -->
-        <div class="gift-card">
-          <img src="./Images/fatura.jpg" alt="Fatura do cartão" class="gift-image">
-          <div class="gift-info">
-            <div class="gift-title">Fatura do cartão de crédito</div>
-            <div class="gift-price">R$ 120,00</div>
-            <button class="gift-button" data-value="120" data-title="Fatura do cartão">Presentear</button>
-          </div>
-        </div>
-
-        <!-- 24 -->
-        <div class="gift-card">
-          <img src="./Images/theking.jpg" alt="Selo de bets" class="gift-image" style="object-position: top;">
-          <div class="gift-info">
-            <div class="gift-title">Selo de "of the king the power the bets"</div>
-            <div class="gift-price">R$ 250,00</div>
-            <button class="gift-button" data-value="250" data-title="Selo de bets">Presentear</button>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <!-- Modal para o QR Code de pagamento -->
+
     <div class="modal" id="payment-modal">
       <div class="modal-content">
-        <span class="close-modal">&times;</span>
+        <span class="close-modal">×</span>
         <h3>Presentear os Noivos</h3>
         <p id="modal-gift-description">Presente: <span id="gift-title">-</span></p>
         <p id="modal-gift-value">Valor: <span id="gift-value">-</span></p>
@@ -969,7 +845,7 @@
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
+      
       // Atualiza os elementos do contador
       const daysStr = days.toString().padStart(3, '0');
       const hoursStr = hours.toString().padStart(2, '0');
@@ -995,27 +871,23 @@
     const tabs = document.querySelectorAll('.tab');
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        // Remove a classe active de todas as abas
         tabs.forEach(t => t.classList.remove('active'));
-        // Adiciona a classe active na aba clicada
         tab.classList.add('active');
         
-        // Esconde todos os conteúdos
         document.querySelectorAll('.tab-content').forEach(content => {
           content.classList.remove('active');
         });
         
-        // Mostra o conteúdo da aba selecionada
         const tabId = tab.getAttribute('data-tab');
         document.getElementById(tabId + '-tab').classList.add('active');
       });
     });
-
+    
     // Modal para pagamento
     const modal = document.getElementById('payment-modal');
     const giftButtons = document.querySelectorAll('.gift-button');
     const closeModal = document.querySelector('.close-modal');
-
+    
     giftButtons.forEach(button => {
       button.addEventListener('click', () => {
         const giftTitle = button.getAttribute('data-title');
@@ -1027,17 +899,17 @@
         modal.style.display = 'flex';
       });
     });
-
+    
     closeModal.addEventListener('click', () => {
       modal.style.display = 'none';
     });
-
+    
     window.addEventListener('click', (event) => {
       if (event.target === modal) {
         modal.style.display = 'none';
       }
     });
-
+    
     // Criar corações animados no fundo
     function createHearts() {
       const container = document.getElementById('hearts-container');
@@ -1047,27 +919,19 @@
         const heart = document.createElement('div');
         heart.classList.add('heart');
         
-        // Posição aleatória
         const left = Math.random() * 100;
         heart.style.left = `${left}%`;
-        
-        // Duração aleatória
-        const duration = Math.random() * 15 + 10; // Entre 10 e 25 segundos
+        const duration = Math.random() * 15 + 10;
         heart.style.animation = `fall ${duration}s linear infinite`;
-        
-        // Atraso aleatório
         const delay = Math.random() * 15;
         heart.style.animationDelay = `${delay}s`;
-        
-        // Tamanho aleatório
-        const size = Math.random() * 15 + 10; // Entre 10 e 25 pixels
+        const size = Math.random() * 15 + 10;
         heart.style.width = `${size}px`;
         heart.style.height = `${size}px`;
         
         container.appendChild(heart);
       }
     }
-
     createHearts();
 
     // PWA Install Button
@@ -1075,29 +939,22 @@
     const installButton = document.getElementById('install-button');
 
     window.addEventListener('beforeinstallprompt', (e) => {
-      // Impede que o mini-infobar apareça em celulares
       e.preventDefault();
-      // Armazena o evento para que possa ser acionado mais tarde
       deferredPrompt = e;
-      // Exibe o botão de instalação
       installButton.style.display = 'block';
     });
-
+    
     installButton.addEventListener('click', async () => {
       if (!deferredPrompt) {
         return;
       }
-      // Mostra o prompt de instalação
       deferredPrompt.prompt();
-      // Espera pela escolha do usuário
       const { outcome } = await deferredPrompt.userChoice;
-      // Registra a escolha do usuário
       console.log(`User ${outcome} the app installation`);
-      // Limpa a referência
       deferredPrompt = null;
-      // Esconde o botão
       installButton.style.display = 'none';
     });
+    
     // Função para copiar chave PIX
     function copyPixKey() {
       const pixKey = document.getElementById('pix-key').textContent;
@@ -1105,7 +962,6 @@
         alert('Chave PIX copiada!');
       }).catch(err => {
         console.error('Erro ao copiar: ', err);
-        // Fallback para navegadores mais antigos
         const textArea = document.createElement('textarea');
         textArea.value = pixKey;
         document.body.appendChild(textArea);
@@ -1115,6 +971,167 @@
         alert('Chave PIX copiada!');
       });
     }
+
+    // --- NOVO: LÓGICA DO JOGO DE LABIRINTO ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('maze-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const winMessage = document.getElementById('win-message');
+        const resetButton = document.getElementById('reset-game-btn');
+
+        const TILE_SIZE = 20;
+        const MAZE_WIDTH = canvas.width / TILE_SIZE;
+        const MAZE_HEIGHT = canvas.height / TILE_SIZE;
+        
+        // 1 = parede, 0 = caminho
+        const maze = [
+            [0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0],
+            [0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+            [1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+            [0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0],
+            [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+            [0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0],
+            [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+            [1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+            [0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+            [0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0],
+            [0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            [0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0],
+            [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        ];
+
+        const ball = {
+            x: TILE_SIZE / 2,
+            y: TILE_SIZE / 2,
+            radius: TILE_SIZE / 2.5,
+            color: '#be8a60',
+        };
+
+        const goal = {
+            x: MAZE_WIDTH - 1,
+            y: MAZE_HEIGHT - 1,
+            color: '#6e5849',
+        }
+
+        let isDragging = false;
+        let gameWon = false;
+
+        function drawMaze() {
+            for (let y = 0; y < MAZE_HEIGHT; y++) {
+                for (let x = 0; x < MAZE_WIDTH; x++) {
+                    ctx.fillStyle = maze[y][x] === 1 ? '#4b3832' : '#f7f3e9';
+                    ctx.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                }
+            }
+        }
+
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+            ctx.fillStyle = ball.color;
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawGoal() {
+             ctx.fillStyle = goal.color;
+             ctx.fillRect(goal.x * TILE_SIZE, goal.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        }
+
+        function redraw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawMaze();
+            drawGoal();
+            drawBall();
+        }
+
+        function checkCollision(x, y) {
+            const gridX = Math.floor(x / TILE_SIZE);
+            const gridY = Math.floor(y / TILE_SIZE);
+            if (gridX < 0 || gridX >= MAZE_WIDTH || gridY < 0 || gridY >= MAZE_HEIGHT) {
+                return true;
+            }
+            return maze[gridY][gridX] === 1;
+        }
+
+        function resetGame() {
+            ball.x = TILE_SIZE / 2;
+            ball.y = TILE_SIZE / 2;
+            gameWon = false;
+            winMessage.style.display = 'none';
+            redraw();
+        }
+
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return {
+                x: (clientX - rect.left) * scaleX,
+                y: (clientY - rect.top) * scaleY
+            };
+        }
+
+        function handleStart(e) {
+            if (gameWon) return;
+            e.preventDefault();
+            const pos = getMousePos(e);
+            const dx = pos.x - ball.x;
+            const dy = pos.y - ball.y;
+            if (Math.sqrt(dx * dx + dy * dy) < ball.radius) {
+                isDragging = true;
+            }
+        }
+
+        function handleMove(e) {
+            if (!isDragging || gameWon) return;
+            e.preventDefault();
+            const pos = getMousePos(e);
+
+            if (checkCollision(pos.x, pos.y)) {
+                isDragging = false;
+                resetGame();
+                return;
+            }
+
+            ball.x = pos.x;
+            ball.y = pos.y;
+            redraw();
+
+            const goalGridX = Math.floor(ball.x / TILE_SIZE);
+            const goalGridY = Math.floor(ball.y / TILE_SIZE);
+
+            if (goalGridX === goal.x && goalGridY === goal.y) {
+                gameWon = true;
+                isDragging = false;
+                winMessage.style.display = 'flex';
+            }
+        }
+
+        function handleEnd(e) {
+            e.preventDefault();
+            isDragging = false;
+        }
+
+        canvas.addEventListener('mousedown', handleStart);
+        canvas.addEventListener('mousemove', handleMove);
+        canvas.addEventListener('mouseup', handleEnd);
+        canvas.addEventListener('mouseleave', handleEnd); // Reset if mouse leaves canvas
+        
+        canvas.addEventListener('touchstart', handleStart, { passive: false });
+        canvas.addEventListener('touchmove', handleMove, { passive: false });
+        canvas.addEventListener('touchend', handleEnd);
+
+        resetButton.addEventListener('click', resetGame);
+        
+        // Initial draw
+        redraw();
+    });
   </script>
 </body>
 </html>
