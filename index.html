@@ -552,7 +552,6 @@
       <div class="tab active" data-tab="countdown">Contagem Regressiva</div>
       <div class="tab" data-tab="location">Localização</div>
       <div class="tab" data-tab="gifts">Lista de Presentes</div>
-      <div class="tab" data-tab="palpites">Compra de Palpites</div>
     </div>
 
     <!-- Aba de Contagem Regressiva -->
@@ -675,43 +674,6 @@
       </div>
     </div>
     
-    <!-- Aba de Compra de Palpites -->
-    <div class="tab-content" id="palpites-tab" style="text-align: center;">
-      <h3>Tente a Sorte! Adivinhe a Senha e Ganhe!</h3>
-      <p>Compre seus palpites e tente abrir um dos nossos cadeados premiados! Cada cadeado tem um nível de dificuldade e um prêmio diferente.</p>
-
-      <div style="margin: 20px 0;">
-        <label for="cadeado" style="display: block; margin-bottom: 5px;">Escolha o Cadeado:</label>
-        <select id="cadeado" style="padding: 8px; border-radius: 5px; border: 1px solid var(--primary); width: 100%; max-width: 300px; margin: 0 auto; display: block;">
-          <option value="facil">Cadeado Fácil (R$ 10 - Prêmio: R$ 100)</option>
-          <option value="medio">Cadeado Médio (R$ 20 - Prêmio: R$ 150)</option>
-          <option value="dificil">Cadeado Difícil (R$ 30 - Prêmio: R$ 200)</option>
-        </select>
-      </div>
-
-      <div style="margin: 20px 0;">
-        <label style="display: block; margin-bottom: 5px;">Escolha um Baú:</label>
-        <div id="baus-container" style="display: flex; flex-wrap: wrap; justify-content: center;">
-          <!-- Aqui você geraria os baús dinamicamente com JavaScript -->
-          <div class="bau" data-numero="1" style="width: 50px; height: 50px; background-color: #f00; margin: 5px; border-radius: 5px; cursor: pointer;"></div>
-          <div class="bau" data-numero="2" style="width: 50px; height: 50px; background-color: #0f0; margin: 5px; border-radius: 5px; cursor: pointer;"></div>
-          <div class="bau" data-numero="3" style="width: 50px; height: 50px; background-color: #00f; margin: 5px; border-radius: 5px; cursor: pointer;"></div>
-          <!-- ...mais baús... -->
-        </div>
-        <input type="hidden" id="bau-escolhido" name="bau-escolhido" value="">
-      </div>
-
-      <div style="margin: 20px 0;">
-        <label>Digite seu Palpite:</label><br>
-        <input type="number" maxlength="1" style="width: 30px; padding: 5px; border-radius: 5px; border: 1px solid var(--primary); text-align: center;">
-        <input type="number" maxlength="1" style="width: 30px; padding: 5px; border-radius: 5px; border: 1px solid var(--primary); text-align: center;">
-        <input type="number" maxlength="1" style="width: 30px; padding: 5px; border-radius: 5px; border: 1px solid var(--primary); text-align: center;">
-        <input type="number" maxlength="1" style="width: 30px; padding: 5px; border-radius: 5px; border: 1px solid var(--primary); text-align: center;">
-      </div>
-
-      <button class="gift-button" onclick="comprarPalpite()" style="margin-top: 20px;">Comprar Palpite</button>
-    </div>
-
     <!-- Aba de Lista de Presentes -->
     <div class="tab-content" id="gifts-tab">
       <h3>Lista de Presentes</h3>
@@ -983,7 +945,6 @@
     // Configuração da data do casamento (formato: ano, mês-1, dia, hora, minuto)
     const weddingDate = new Date(2025, 8, 7, 10, 30, 0); // 7 de setembro de 2025 às 10:30
 
-
     // Função para atualizar a contagem regressiva
     function updateCountdown() {
       const now = new Date();
@@ -1061,7 +1022,7 @@
         const giftValue = button.getAttribute('data-value');
         
         document.getElementById('gift-title').textContent = giftTitle;
-        document.getElementById('gift-value').textContent = R$ ${giftValue},00;
+        document.getElementById('gift-value').textContent = `R$ ${giftValue},00`;
         
         modal.style.display = 'flex';
       });
@@ -1088,20 +1049,20 @@
         
         // Posição aleatória
         const left = Math.random() * 100;
-        heart.style.left = ${left}%;
+        heart.style.left = `${left}%`;
         
         // Duração aleatória
         const duration = Math.random() * 15 + 10; // Entre 10 e 25 segundos
-        heart.style.animation = fall ${duration}s linear infinite;
+        heart.style.animation = `fall ${duration}s linear infinite`;
         
         // Atraso aleatório
         const delay = Math.random() * 15;
-        heart.style.animationDelay = ${delay}s;
+        heart.style.animationDelay = `${delay}s`;
         
         // Tamanho aleatório
         const size = Math.random() * 15 + 10; // Entre 10 e 25 pixels
-        heart.style.width = ${size}px;
-        heart.style.height = ${size}px;
+        heart.style.width = `${size}px`;
+        heart.style.height = `${size}px`;
         
         container.appendChild(heart);
       }
@@ -1131,7 +1092,7 @@
       // Espera pela escolha do usuário
       const { outcome } = await deferredPrompt.userChoice;
       // Registra a escolha do usuário
-      console.log(User ${outcome} the app installation);
+      console.log(`User ${outcome} the app installation`);
       // Limpa a referência
       deferredPrompt = null;
       // Esconde o botão
@@ -1154,51 +1115,6 @@
         alert('Chave PIX copiada!');
       });
     }
-
-    // Aba de Palpites
-    const cadeados = {
-        facil: { senha: "1234", premio: 100, custo: 10, palpitesMinimos: 10 },
-        medio: { senha: "5678", premio: 150, custo: 20, palpitesMinimos: 8 },
-        dificil: { senha: "9012", premio: 200, custo: 30, palpitesMinimos: 7 }
-    };
-
-    let palpites = {
-        facil: [],
-        medio: [],
-        dificil: []
-    };
-
-    function comprarPalpite() {
-        const cadeadoEscolhido = document.getElementById("cadeado").value;
-        const palpite = Array.from(document.querySelectorAll("#palpites-tab input[type='number']")).map(input => input.value).join("");
-
-        if (palpite.length !== 4) {
-            alert("Por favor, insira um palpite de 4 dígitos.");
-            return;
-        }
-
-        palpites[cadeadoEscolhido].push(palpite);
-
-        //Simulação de lógica de verificação (substitua com sua lógica real)
-        if (palpites[cadeadoEscolhido].length >= cadeados[cadeadoEscolhido].palpitesMinimos) {
-            if (palpite === cadeados[cadeadoEscolhido].senha) {
-                alert("Parabéns! Você acertou a senha e ganhou R$" + cadeados[cadeadoEscolhido].premio + "!");
-            } else {
-                alert("Palpite incorreto. Tente novamente!");
-            }
-        } else {
-            alert("Palpite registrado. Aguarde até que haja palpites suficientes para liberar a verificação.");
-        }
-    }
-
-    // Baús
-    document.querySelectorAll('.bau').forEach(bau => {
-        bau.addEventListener('click', function() {
-            document.querySelectorAll('.bau').forEach(b => b.classList.remove('selecionado'));
-            this.classList.add('selecionado');
-            document.getElementById('bau-escolhido').value = this.dataset.numero;
-        });
-    });
   </script>
 </body>
-</html>
+            </html>
